@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+window.onload = function() {
+	console.log( document.body.innerHTML );
+	// -------------------------------------------
+	
+	document.body.innerHTML += "<div><h1>INNER HTML</h1></div>";
+	// innerHTML 속성에 = 연산자를 사용하여 대입하면
+	//기존의 HTML코드를 지우고 대입함
+	// += 연산자를 사용하면 기존 HTML코드에 추가 작성함
+	
+	// -------------------------------------------
+	
+	var content = document.getElementById("content");
+	
+	content.innerHTML = "<h3>innerHTML</h3>";
+	content.innerHTML += "<p>테스트</p>";
+	content.innerHTML += "<hr>";
+	
+	// -------------------------------------------
+	
+	var html = "";
+	html += "<h3>테스트</h3>";
+	html += "<p>하나</p>";
+	html += "<p>둘</p>";
+	html += "<p>셋</p>";
+	
+	content.innerHTML = html;
+	
+	// -------------------------------------------
+	
+	console.log("--- innerHTML ---");
+	console.log( content.innerHTML );
+
+	console.log("--- innerText ---");
+	console.log( content.innerText );
+	
+	// -------------------------------------------
+
+// 	content.innerText = "<h1>하이</h1>";
+	
+};
+
+</script>
+</head>
+<body>
+
+<div id="content">CONTENT</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	var $div = $("<div>") // 새로운 div 노드 생성
+	
+	var $myDiv = $("#myDiv") // #myDiv 노드 찾기
+	
+	$myDiv.append( $div ) //새로운 div를 #myDiv에 삽입
+	
+	// ----------------------------------------------
+	
+	var $newDiv
+	= $("<div>").append(
+			$("<ul>").append(
+				$("<li>").html("하이") 
+			)
+	);
+	
+	$("#myDiv").append( $newDiv );
+	
+	// ----------------------------------------------
+	
+	$("<div>").append(
+		$("<ul>").append(
+			$("<li>").html("헬로") 
+		)
+	).appendTo( $myDiv );
+	
+});
+</script></head><body>
+
+<div id="myDiv"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

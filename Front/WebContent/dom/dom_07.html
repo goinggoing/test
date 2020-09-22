@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+window.onload = function() {
+	
+	var h3 = document.getElementsByTagName("h3");
+	console.log(h3);
+	
+	h3[0].innerHTML = "HI";
+	h3[1].innerHTML = "HELLO";
+	
+	h3[2].style.color = "blue";
+	
+	// ---------------------------------------------
+	
+	var h1 = document.getElementsByTagName("h1");
+	console.log(h1);
+	
+ 	h1[0].innerHTML = "AHAHAHAH";
+	
+	// ---------------------------------------------
+
+	document.getElementsByTagName("h1")[0].style.color="red";
+	
+	// ---------------------------------------------
+	
+	h3[2].remove();
+	console.log(h3);
+};
+
+</script>
+</head>
+<body>
+
+<h1>제목</h1>
+<hr>
+<h3>Javascript</h3>
+<h3>DOM</h3>
+<h3>getElementsByTagName</h3>
+
+</body>
+</html>
+
+
+
+
+
+
+

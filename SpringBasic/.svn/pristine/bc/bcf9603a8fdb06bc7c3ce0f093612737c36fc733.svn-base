@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="web.dao.face.DynamicQueryDao">
+
+<!-- 	<select id=""> -->
+	
+<!-- 		<if test="true"> -->
+<!-- 		</if> -->
+
+<!-- 		<if test="false"> -->
+<!-- 		</if> -->
+		
+<!-- 	</select> -->
+
+
+
+<!-- 	<select id=""> -->
+<!-- 		SELECT * FROM board -->
+<!-- 		WHERE 1=1 -->
+<!-- 		<if test="search != null and search != ''"> -->
+<!-- 			AND title LIKE '%' || #{search } || '%' -->
+<!-- 		</if> -->
+<!-- 	</select> -->
+
+
+
+<!-- 	<select id=""> -->
+<!-- 		SELECT * FROM emp -->
+<!-- 		WHERE 1=1 -->
+<!-- 		<if test="empno != null and empno != ''"> -->
+<!-- 			AND empno = #{empno } -->
+<!-- 		</if> -->
+<!-- 		<if test="ename == 'SMITH'"> -->
+<!-- 			AND job = 'SALESMAN' -->
+<!-- 		</if> -->
+<!-- 	</select> -->
+
+
+
+<!-- 	<select id=""> -->
+<!-- 		SELECT * FROM board -->
+<!-- 		WHERE 1=1 -->
+<!-- 		<choose> -->
+<!-- 			<when test="cate == 'title'"> -->
+<!-- 				AND title LIKE '%' || #{title } || '%' -->
+<!-- 			</when> -->
+<!-- 			<when test="cate == 'content'"> -->
+<!-- 				AND content LIKE '%' || #{title } || '%' -->
+<!-- 			</when> -->
+<!-- 			<when test="cate == 'username'"> -->
+<!-- 				AND username LIKE '%' || #{title } || '%' -->
+<!-- 			</when> -->
+<!-- 			<otherwise> -->
+<!-- 			</otherwise> -->
+<!-- 		</choose> -->
+<!-- 	</select> -->
+	
+	
+	<select id="select"
+	 parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM test_member
+		WHERE id IN
+		<foreach collection="dataList" item="data"
+		 open="(" close=")" separator=",">
+			#{data }		
+		</foreach>
+	</select>
+
+	<select id="select2"
+	 parameterType="web.dto.CheckBoxTest" resultType="hashmap">
+		SELECT * FROM test_member
+		WHERE id IN
+		<foreach collection="check" item="data"
+		 open="(" close=")" separator=",">
+			#{data }		
+		</foreach>
+	</select>
+	
+	
+<!-- 	<select id=""> -->
+<!-- 		SELECT * FROM test_member -->
+<!-- 		<trim prefix="WHERE" prefixOverrides="AND|OR"> -->
+<!-- 			<if test="id != null and id != ''"> -->
+<!-- 				AND id = #{id } -->
+<!-- 			</if> -->
+<!-- 			<if test="pw != null and pw != ''"> -->
+<!-- 				AND pw = #{pw } -->
+<!-- 			</if> -->
+<!-- 		</trim> -->
+<!-- 	</select> -->
+	
+<!-- 	<update id=""> -->
+<!-- 		UPDATE test_member -->
+<!-- 		<trim prefix="SET" suffixOverrides=","> -->
+<!-- 			<if test="id != null and id != ''"> -->
+<!-- 				id = #{id }, -->
+<!-- 			</if> -->
+<!-- 			<if test="pw != null and pw != ''"> -->
+<!-- 				pw = #{pw } -->
+<!-- 			</if> -->
+<!-- 		</trim> -->
+<!-- 	</update> -->
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

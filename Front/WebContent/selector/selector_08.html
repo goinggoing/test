@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+/* html {	color: #666; } */
+:root {	color: #666; }
+
+
+
+
+/* 형제 요소들 중에서 순서를 계산하며
+ 다른 태그도 순서에 포함된다 */
+li:nth-child(2) {	color: red; }
+li:nth-last-child(2) {	color: blue; }
+
+
+
+:first-child {	border: 1px solid red; }
+li:last-child {	border: 1px dotted blue; }
+/* 생각지 못한 <html>, <head> 같은 요소도 적용될 수
+ 있으므로 단독으로 가상 선택자를 사용하지 않는 것이 좋다 */
+
+
+
+
+li:only-child {	background: tomato; }
+
+
+ul:only-of-type {	background: yellow; }
+
+
+
+
+/* 부정 선택자 */
+li:not(.title) {
+	font-style: italic;
+}
+
+/* class속성이 없는 li태그 */
+li:not([class]) {
+	font-size: 30px;
+}
+
+</style></head><body>
+
+<h1 class="title">가상클래스 선택자</h1>
+<hr>
+<h2>요소 순서 선택자</h2>
+<ul>
+	<li>HTML5</li>
+	<li>CSS3</li>
+	<li>Javascript</li>
+	<li>jQuery</li>
+	<li>JSP</li>
+</ul>
+
+<ul>
+	<li class="only">HTML5</li>
+</ul>
+
+<ul>
+	<li>CSS3</li>
+	<li>선택자</li>
+	<ul>
+		<li>ID선택자</li>
+		<li>CLASS선택자</li>
+	</ul>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

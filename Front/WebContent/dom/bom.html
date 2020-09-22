@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+var data = 123;
+console.log( data );
+console.log( window.data );
+
+// window.open("http://www.naver.com/") //팝업으로 창 띄우기
+
+// window.close(); //창 닫기
+
+window.setTimeout(function() {
+	console.log("HIHI");
+}, 3000)
+
+console.log("----------------------------")
+console.log( navigator.userAgent ) //브라우저+운영체제의 정보
+console.log( navigator.language ) //언어권 정보, Locale
+console.log( navigator.vendor ) //브라우저 벤더사, 배포하는 회사
+
+console.log("----------------------------")
+console.log( location.host ) //도메인정보
+console.log( location.hostname ) //호스트네임
+console.log( location.protocol ) //프로토콜
+console.log( location.href ) //URL 정보
+console.log( location.pathname ) //Resource(자원) 경로
+
+
+//페이지 이동 명령어(코드)
+// location.href = "/function/fn_08.html";
+// <a> 태그의 href 속성을 설정하고 클릭을 한 것과 같은 반응
+
+console.log("----------------------------")
+
+// history.forward(); //다음으로 가기
+// history.back(); //이전으로 가기
+
+// history.go(-1); // n만큼 다음 또는 이전으로 이동
+// -1 이면 이전으로 한 번 이동
+
+console.log("----------------------------")
+
+// 시작메뉴 제외한 화면의 크기
+console.log( screen.availHeight );
+console.log( screen.availWidth );
+
+// 화면의 크기
+console.log( screen.height );
+console.log( screen.width );
+
+//사용 가능한 색상 수(표현가능한 색상 수, bit단위)
+console.log( screen.colorDepth );
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

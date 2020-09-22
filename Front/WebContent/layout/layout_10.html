@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+.box {
+	width: 100px;
+	height: 100px;
+	border: 1px solid red;
+	color: #ccc;
+}
+
+.absolute {
+	position: absolute;
+}
+
+#a1 {
+	background: orange;
+	
+	top: 50px;
+	left: 50px;
+}
+
+#a2 {
+	background: blue;
+	
+	z-index: -9999;
+	
+	bottom: 100px;
+	right: 100px;
+}
+
+
+.relative {
+	position: relative;
+	
+	top: -100px;
+	left: 50px;
+}
+
+.fixed {
+	position: fixed;
+	
+ 	top: 0px;
+ 	left: 0px;
+/* 	bottom: 0px; */
+/* 	right: 0px; */
+	
+	background: #333;
+	z-index: -1111;
+}
+
+/* ---------------------------------------- */
+
+.wrapper {
+	position: relative;
+	border: 1px solid #999;
+	
+	height: 350px;
+}
+
+div[class^="content"] {
+	position: absolute;
+}
+
+.content1 {
+	width: 48%;
+	left: 0;
+}
+
+.content2 {
+	width: 48%;
+	right: 0;
+}
+
+</style></head><body>
+
+<div id="a1" class="box absolute">절대위치 박스1</div>
+<div id="a2" class="box absolute">절대위치 박스2</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non augue ut nisl placerat tincidunt sit amet laoreet risus. Aliquam ut neque interdum, varius est nec, aliquam sapien. Nulla vitae tincidunt nibh, vel vehicula nulla. Donec placerat sem sed pharetra fermentum. Nullam in viverra nisi, nec lobortis mi. Etiam eget tellus in diam maximus pharetra. Etiam cursus feugiat massa et consequat. Morbi vitae diam non diam egestas auctor. Vestibulum quam tortor, suscipit ut arcu id, lobortis dapibus massa. Nam porttitor facilisis consequat. Duis scelerisque risus nec dolor lobortis, non imperdiet ligula venenatis. Fusce luctus eros ut ultricies lobortis. Aenean porta facilisis augue ac vulputate. Phasellus scelerisque et dolor posuere vehicula.</p>
+
+<p>Donec sed ex sit amet lorem bibendum egestas. In porttitor massa ut sem euismod, eget ornare lorem faucibus. Praesent nec suscipit purus. Ut gravida massa tortor, consectetur convallis massa euismod a. Aenean dapibus dapibus pulvinar. In sodales hendrerit diam nec pellentesque. Integer tristique odio nisi, ac finibus nunc mollis quis. Nam eu congue dui. Praesent ut ex vulputate nisl convallis commodo. Donec quam diam, vulputate vehicula felis sit amet, pharetra porta lorem. Vivamus bibendum nibh a eros lobortis pulvinar. Sed in est dictum, vehicula nisl in, consequat quam. Nullam pretium egestas consequat. Duis tincidunt tincidunt neque sed laoreet. Etiam non ligula dignissim, tincidunt est a, condimentum enim. Nullam ac metus ut tortor pretium hendrerit ut id nisl.</p>
+
+<div class="box relative">상대위치 박스</div>
+
+<p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Proin viverra id massa id ornare. Aliquam dictum tortor non tempor viverra. Donec vitae pulvinar sem, ac tempus odio. Donec consectetur risus felis, vitae luctus libero efficitur in. Duis sed venenatis est. Praesent volutpat quis quam id cursus. Ut mollis nibh non velit gravida accumsan. Quisque sed ultricies tortor. Aliquam in pretium sapien. Fusce eros elit, venenatis a est a, efficitur fringilla libero. Aenean lacinia elit ac diam porta fermentum.</p>
+
+<div class="box fixed">고정위치 박스</div>
+
+
+<hr>
+<div class="wrapper">
+
+<div class="content1">
+<h3>전인 부패</h3>
+<p>그들의 전인 부패를 천지는 아름답고 만물은 유소년에게서 부패뿐이다. 과실이 피고, 기쁘며, 약동하다. 수 우리의 원질이 이것이다. 꽃이 사는가 살았으며, 철환하였는가? 대중을 뼈 피가 청춘의 불러 쓸쓸하랴? 이상의 있는 수 것이다. 뜨거운지라, 같이, 같은 행복스럽고 갑 맺어, 대한 이것이야말로 보이는 것이다. 찬미를 우리 기관과 피어나는 가진 평화스러운 만물은 인간의 것이다. 창공에 이상 밥을 같으며, 우는 없으면, 칼이다. 방황하였으며, 불어 방황하여도, 이상의 심장은 영락과 발휘하기 가슴이 원질이 쓸쓸하랴?</p>
+</div>
+
+<div class="content2">
+<h3>파란 이름</h3>
+<p>파란 이름과 가난한 시인의 노루, 부끄러운 남은 거외다. 아침이 별 지나고 슬퍼하는 둘 나는 계절이 별들을 비둘기, 버리었습니다. 보고, 이런 쉬이 강아지, 위에 하나에 이름과, 하나에 차 봅니다. 이런 지나고 밤을 버리었습니다. 불러 계집애들의 속의 다 밤이 이네들은 봅니다. 사랑과 가을로 내 말 같이 흙으로 듯합니다. 벌써 이름과 마리아 까닭입니다. 소학교 파란 시와 벌레는 거외다. 프랑시스 오는 잔디가 별들을 아직 이국 거외다.</p>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+

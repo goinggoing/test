@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="web.dao.face.RotSteDao">
+
+	<resultMap type="web.dto.RotSteMng" id="RotSte">
+		<result column="ste_seq" property="steSeq"/>
+		<result column="ste_nm" property="steNm"/>
+		<result column="ste_cd" property="steCd"/>
+		<result column="ste_des" property="steDes"/>
+		<result column="file_seq" property="fileSeq"/>
+		<result column="reg_dtm" property="regDtm"/>
+		<result column="mod_dtm" property="modDtm"/>
+		<result column="reg_ip" property="regIp"/>
+		<result column="reg_pgm" property="regPgm"/>
+		<result column="mod_ip" property="modIp"/>
+		<result column="mod_pgm" property="modPgm"/>
+	</resultMap>
+	
+	<resultMap type="web.dto.AttchfileDts" id="Dts">
+		<result column="ogn_file_nm" property="ognFileNm" />
+		<result column="save_file_nm" property="saveFileNm"/>
+ 		<result column="reg_dtm" property="regDtm" />
+		<result column="file_size" property="fileSize" />
+		<result column="file_seq" property="fileSeq" />
+		<result column="save_path" property="savePath" />
+		
+	</resultMap>
+	
+<!-- 오라클 string->date: https://lookingfor.tistory.com/entry/oracle-date-format -->
+	<!-- 리스트  -->
+	<select id="selectList" parameterType="hashmap" resultMap="RotSte">
+		SELECT file_seq,
+			   ste_seq,
+			   ste_nm,
+			   nm,
+			   cttpc,
+			   email,
+		CASE psitn
+			WHEN 'admin' THEN '행정'
+			WHEN 'corp' THEN '공사'
+			WHEN 'human' THEN '인사'
+			WHEN 'other' THEN '기타'
+		END AS
+			   psitn,
+			   to_char(reg_dtm,'YYYY-MM-DD HH24:MI:SS') reg_dtm
+<!-- 			   to_char(reg_dtm,'YYYY-MM-DD HH24:MI:SS') reg_dtm -->
+		FROM rot_ste_mng
+		WHERE 1=1
+			<if test='keyword!=""'>
+			AND ste_des LIKE '%' || #{keyword } || '%'
+			</if>
+		
+			<if test='searchType!=""'>
+			And psitn LIKE '%' || #{searchType } || '%'
+			</if>
+		
+			<if test="startDate !=null and endDate !=null">
+			And reg_dtm 
+			BETWEEN to_date(#{startDate }) AND to_date(#{endDate }) + 1
+			</if>
+		ORDER BY reg_dtm DESC						   
+	</select>
+	
+	<!-- 신고폼 작성 -->
+	<insert id="insertRotSte" parameterType="web.dto.RotSteMng">
+		INSERT INTO
+			rot_ste_mng
+				(	
+				   ste_seq,
+				    ste_nm,
+				   ste_des,
+				        nm,
+				     cttpc,
+				     email,
+				     psitn,
+				   reg_dtm,
+				   file_seq
+				)
+				 VALUES
+					(
+					   ste_sequence.nextval,
+					   #{steNm },
+					  #{steDes },
+					      #{nm },
+					   #{cttpc },
+					   #{email },
+					   #{psitn },
+					   sysdate,
+<!-- 					  to_date(sysdate, 'YYYY-MM-DD HH24:MI:SS'), -->
+					   #{fileSeq }
+					)		
+	</insert>
+	
+	<!-- 마스터 파일 정보 삽입-->
+	<insert id="insertFileMst" parameterType="web.dto.AttchfileMst">
+		INSERT INTO attchfile_mst (file_seq, reg_dtm)
+		VALUES ( #{fileSeq }, sysdate )
+	</insert>
+	
+	<!-- 디테일 파일 정보 삽입  -->
+	<insert id="insertFileDts" parameterType="web.dto.AttchfileDts">
+		INSERT INTO 
+			attchfile_dts 
+					(
+						file_seq,
+							 seq, 
+					 ogn_file_nm,
+				    save_file_nm, 
+				       file_size,
+				       save_path,
+				       reg_dtm
+				    )
+				    VALUES 
+				    	(
+						 #{fileSeq },
+				seq_sequence.nextval,
+					   #{ognFileNm }, 
+					  #{saveFileNm },
+					     #{fileSize},
+					    #{savePath },
+					    sysdate
+
+				   		 )
+	</insert>
+	
+	<!-- 신고글 내용 삭제 -->
+	<delete id="deleteList" parameterType="String">
+		DELETE FROM rot_ste_mng
+		WHERE file_seq IN ( ${fileSeq } )
+	</delete>
+	
+	<!-- 마스터 파일 정보 삭제 -->
+	<delete id="deleteFileMst" parameterType="String">
+		DELETE FROM attchfile_mst
+		WHERE file_seq IN ( ${fileSeq } )
+	</delete>
+	
+	<!-- 디테일 파일 정보 삭제 -->
+	<delete id="deleteFileDts" parameterType="String">
+		DELETE FROM attchfile_dts
+		WHERE file_seq IN ( ${fileSeq } )
+	</delete>
+	
+	<!-- 파일번호 얻기  -->
+	<select id="getFileSeq" resultType="int">
+		SELECT file_sequence.nextval
+		FROM dual
+	</select>
+	
+	<!-- 파일 리스트  -->
+	<select id="selectFileList" parameterType="String" resultMap="Dts">
+		SELECT 
+			ogn_file_nm,
+		      file_size,
+		            seq,
+		       file_seq, 
+		   save_file_nm,
+		       save_path
+		FROM attchfile_dts
+		WHERE file_seq in ( #{fileSeq } )
+	</select>
+	
+	<!-- 다운로드할 파일 정보 -->
+	<select id="selectFile" parameterType="int" resultMap="Dts">
+		SELECT 
+			ogn_file_nm,
+		   save_file_nm,
+		        reg_dtm,
+		      file_size,
+		       file_seq, 
+		            seq, 
+		      save_path
+		FROM attchfile_dts
+		WHERE seq = #{seq } 
+	</select>	
+</mapper>

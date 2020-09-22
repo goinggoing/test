@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="web.dao.face.TestDao">
+	 
+	<select id="selectDW" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT CODE_ID, CODE_NM FROM (
+   			SELECT 
+   				 'd' || TO_CHAR(LEVEL) AS CODE_ID,
+   				  TO_CHAR(LEVEL)||'일' AS CODE_NM
+   			FROM DUAL 
+   			CONNECT BY LEVEL  <= (LAST_DAY(TO_DATE(TO_CHAR(SYSDATE,'YYYYMM'),'YYYYMM')) 
+   									- TO_DATE(TO_CHAR(SYSDATE,'YYYYMM'),'YYYYMM')+1  )
+   		UNION ALL
+   		SELECT 
+   			 'w' || TO_CHAR( TO_DATE(TO_CHAR(SYSDATE,'YYYYMMDD'),'YYYYMMDD')+LEVEL-1, 'D' ) AS CODE_ID
+         	 ,TO_CHAR( TO_DATE(TO_CHAR(SYSDATE,'YYYYMMDD'),'YYYYMMDD')+LEVEL-1, 'DAY' ) AS CODE_NM
+   		FROM DUAL
+   		CONNECT BY LEVEL <= 7
+   		)
+   		WHERE SUBSTR(CODE_ID,0,1)=#{dw}
+   ]]>
+	</select>
+		
+	<insert id="insert" parameterType="HashMap">
+		INSERT INTO Test(year, dw, combobox)
+		VALUES ( #{year }, #{dw }, #{comboBox } ) 
+	</insert>
+	
+	<select id="selectTest" parameterType="HashMap" resultType="web.dto.Test" >
+		SELECT * FROM Test
+	</select>
+
+
+</mapper>

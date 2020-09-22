@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+window.onload = function() {
+	
+	// --- 태그의 id는 window객체의 property로 등록된다
+	console.log(window.test);
+	console.log(window.myForm);
+	
+	window.test.style.color = 'red';
+	
+	// --- window객체의 property를 사용할 때 window. 생략 가능
+	test.style.border = "1px solid #ccc";
+	
+	// --- <form>태그의 자식요소의 name은
+	//		해당 <form> 객체의 property로 등록된다 ---
+	console.log( myForm.data1 );
+	
+	// id가 myForm인 <form> 객체의 자식요소 중
+	//name이 data1인 요소의 값을 "TEST"로 지정한다
+	myForm.data1.value = "TEST";
+	
+	
+	// --- <form> 태그의 name은 document객체의 property로 등록 ---
+	console.log( document.myFormName );
+	
+// 	console.log("------------------------------------------")
+
+// 	console.log( window.myForm.data2 );
+// 	console.log( myForm.data2 );
+// 	console.log( document.myFormName.data2 );
+	
+// 	console.log("------------------------------------------")
+	
+// 	var f = myForm;
+	
+// 	console.log( f.c[0].checked );
+// 	console.log( f.c[1].checked );
+
+// 	if( f.c[0].checked && f.c[1].checked ) {
+// 		f.submit();
+		
+// 	} else {
+// 		alert("이용약관 & 개인정보 수집 동의에 체크하세요");
+		
+// 	}
+	
+// 	// --------------------------------------------------
+
+// 	// 비활성화 상태(disable)
+// 	console.log( f.b.disabled )
+	
+// 	// 기본값 확인
+// 	console.log( f.data2.value )
+// 	console.log( f.data2.defaultValue )
+	
+// 	// <select>의 선택항목 값
+// 	console.log( f.s.value )
+	
+};
+</script>
+
+</head>
+<body>
+
+<h1 id="test">테스트 폼</h1>
+<hr>
+<form id="myForm" name="myFormName" action="#" method="get">
+
+	<input type="text" name="data1" /><br>
+	<input type="text" name="data2" value="기본값" /><br><br>
+	
+	<input type="checkbox" name="c" value="c1" />
+	<input type="checkbox" name="c" value="c2" /><br><br>
+	
+	<input type="button" name="b" disabled /><br><br>
+
+	<select name="s">
+		<option value="one">1</option>
+		<option value="two">2</option>
+	</select>
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

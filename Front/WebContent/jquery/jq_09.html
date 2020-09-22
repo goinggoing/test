@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	var $div = $("div");
+	
+	console.log( $div.css("width") )//스타일 속성값 가져오기
+	
+	$div.css("width", "500px");//스타일 속성 지정하기
+	
+	// -----------------------------------------------------
+	
+	//객체(Object)를 이용해서 여러 개 스타일을 한번에 적용하기
+
+	var obj = { //자바스크립트 Object
+		"key": "value",
+		"var1": 123,
+		"var2": true,
+		"var3": null
+	};
+	
+// 	$div.css({
+// 		"속성": "속성값",
+// 		"속성": "속성값"
+// 	});
+
+
+	$div.css({
+		"width": "400px",
+		"height": "300px",
+		"border-color": "blue",
+		"display": "inline-block"
+	});
+	
+	// --------------------------------------------------
+	//여러 개의 스타일 값을 객체(Object)로 가져오기
+	var info = $div.css(["width", "height", "display"]);
+	console.log(info);
+	
+	console.log( info.width );
+	
+	info.width = "800px";
+	console.log(info);
+	
+	$div.css( info );
+});
+</script>
+
+</head>
+<body>
+
+<div style="width: 300px; height: 200px; border: 1px solid red;">
+	<p>하나</p>
+	<p>셋</p>
+	<p>넷</p>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

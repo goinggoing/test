@@ -1,0 +1,7 @@
+
+ + 문자스트림 이용 FileCopy
+
+  - Source.txt 파일을 Dest.txt 파일로 복사한다
+   ( Source.txt의 크기 = 4250 Bytes )
+
+  - BufferedReader 와 PrintWriter 를 이용

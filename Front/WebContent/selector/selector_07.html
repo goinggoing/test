@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+/* div요소에 마우스를 올렸을 때 반응 */
+div:hover {	color: red; }
+
+/* span태그 클릭하면 반응 */
+span:active {
+	color: orange;
+	font-size: 30px;
+}
+
+span:hover	{	background-color: green; }
+
+
+input[type="button"]:active {
+	color: blue;
+}
+
+
+/* <a> 의 상태에 따른 선택자 */
+a:link {	color: red; }
+a:visited {	color: gray; }
+
+/* ctrl + shift + del : 인터넷 사용기록 지우기 */
+
+
+
+/* checkbox나 radio 의 checked상태를 따져 선택 */
+:checked {
+	width: 50px;
+	height: 50px;
+}
+
+
+/* 비활성화 상태의 요소 선택 */
+:disabled {	font-size: 8px; }
+
+
+/* 포커스를 얻은 요소 선택 */
+:focus {
+	color: tomato;
+}
+
+/* 비어있는 요소, 자식이 없는 요소 */
+div:empty {
+	height: 100px;
+	background-color: yellow;
+}
+
+</style></head><body>
+
+<div>
+
+<span>span태그 안쪽</span>span태그 바깥쪽<br>
+<input type="button" value="확인" /><br>
+
+<a href="http://www.naver.com">네이버</a>
+<a href="http://www.daum.net">다음</a>
+<a href="http://www.daum.net">다음</a>
+<hr>
+
+<label><input type="checkbox" />확인</label>
+
+<button disabled="disabled">버튼</button>
+
+<hr>
+<div></div>
+
+<hr>
+<input type="text" />
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

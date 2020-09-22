@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+.content {
+	border: 1px solid #ccc;
+}
+
+/* .text {	color: red; } */
+/* .number {	color: blue; } */
+
+[data-type~="text"] {	color: red; }
+[data-type~="number"] {	color: blue; }
+
+.content[data-idx="4"] {	background: #cc0; }
+</style></head><body>
+
+<h1 class="content" data-idx="1" data-type="text">첫번째</h1>
+<h1 class="content" data-idx="2" data-type="number">222</h1>
+<h1 class="content" data-idx="3" data-type="text">세번째</h1>
+<h1 class="content" data-idx="4" data-type="number">44444</h1>
+
+<!-- class : (표준속성) 공통 CSS를 적용하기 위한 카테고리분류 -->
+
+<!-- data-idx : (사용자정의속성, 표준속성) h1태그의 순서 -->
+<!-- data-type : (사용자정의속성, 표준속성) 데이터의 종류 구분 -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

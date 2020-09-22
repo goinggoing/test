@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	// attr()은 클래스의 속성값을 전부 바꿔버린다
+	// class속성을 다룰 때 주의가 필요하다
+	$("div").attr("class", "style4");
+	
+	$("div").attr("id", 'myDiv');
+	
+	$("div").attr("style", "width:200px, height: 300px");
+	
+	// background를 일반 속성으로 부여함
+	// style로 지정하지 않아서 적용되지 않음
+	$("p").eq(1).attr("background", "tomato");
+	
+	// 여러 속성 부여하기
+	$("p").eq(2).attr({
+		"a": "1",
+		"b": "2",
+		"c": "3",
+		"title": "테스트"
+	});
+	
+	// ---------------------------------------------
+	
+	$("p").addClass("red");
+
+// 	$("p")[0].addClass("blue"); // [idx]를 이용하면 JS객체를 반환
+	$("p").eq(0).addClass("blue");
+
+	// ---------------------------------------------
+	
+	// 스타일이 인라인방식으로 적용됨
+	$("div").css("border", "1px solid blue");
+	
+	// 스타일이 임베디드방식으로 적용됨
+	$("div").addClass("borderGray");
+
+// 	// -------------------------------------------------
+	
+	$("p").eq(0).removeClass("red");
+	
+	$("p[class]").css("text-decoration", "underline");
+	
+	//모든 클래스값 제거
+	$("div").removeClass();
+	
+});
+</script>
+
+<style type="text/css">
+
+.red { color: red; }
+.blue { color: blue; }
+.borderGray { border: 1px solid #ccc; }
+
+</style></head><body>
+
+<div class="style1 style2 style3"
+ style="width: 300px; height: 200px; border: 1px solid red;">
+	<p>하나</p>
+	<p>셋</p>
+	<p>넷</p>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

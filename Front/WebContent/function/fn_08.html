@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+// Date 객체
+//	시간관련 객체
+
+var d = new Date(); //시간 객체 생성 ( 현재 시간을 저장함 )
+console.log(d);
+
+console.log( Date.now() ); // 밀리초까지 표현한 HWClock
+// HWClock : 1970년 1월 1일 00시 00분을 기준으로
+//	현재까지 흘러간 시간 (주로 초 단위)
+
+console.log("----------------");
+console.log( d.getHours() + "시" );
+console.log( d.getMinutes() + "분" );
+console.log( d.getSeconds() + "초" );
+console.log( d.getMilliseconds() );
+
+console.log("----------------");
+console.log( d.getHours() + "시 "
+		+ d.getMinutes() + "분 "
+		+ d.getSeconds() + "초 "
+		+ d.getMilliseconds() );
+
+console.log("-------------------")
+// setInterval(function() {
+// 	d = new Date(); //현재 시간 알아내기 (현재 시간 갱신)
+	
+// 	console.log( d.getHours() + "시 "
+// 			+ d.getMinutes() + "분 "
+// 			+ d.getSeconds() + "초 "
+// 			+ d.getMilliseconds() );
+// }, 1000);
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var $p = $("p");
+	console.log($p);
+	
+	$p.css("border", "1px solid red");
+	
+	// -------------------------------------------------
+	
+	// jQuery 객체에 [idx]를 이용한 접근 - JS DOM객체로 반환
+	console.log($p[0]);
+	
+	// jQuery 객체 반환
+	console.log($p.eq(1));
+	
+	// JS 객체 반환
+	console.log($p.get(2));
+	
+	console.log("------------------------------------")
+	
+	var p = document.getElementsByTagName("p");
+	console.log(p);
+	
+	p[0].style.color = "red"; //JS객체
+	
+	var $p1 = $( p[1] ); //JS객체 -> jQuery 객체
+	$p1.css("color", "tomato");
+	
+	console.log("------------------------------------")
+	
+	for(var i=0; i<$("p").length; i++ ){
+		$("P").eq(1).css("background", "gray");
+	}
+	
+	console.log("------------------------------------")
+	
+	$("p").each(function(i,e){
+		console.log("--- " + i + " ---");
+		console.log(e);
+		
+		console.log(this); // JS DOM 객체로 현재 반복 객체 반환
+		
+		console.log($(this)); // jQuery DOM 객체로 변환
+		
+	})
+	
+	// ------------------------------
+	
+	$("p").each(function() {
+		$(this).css("font-style", "italic");
+	})
+	
+});
+	
+	
+	
+</script></head><body>
+
+<div>
+	<span>하나</span>
+	<p>둘</p>
+	<pre>셋</pre>
+	<p>넷</p>
+	<p>다섯</p>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

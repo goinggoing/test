@@ -1,0 +1,13 @@
+ + Server_1on1
+  // 持失切
+  + Server_1on1()
+	ServerSocket 持失
+	accept();
+	chat(Socket);
+
+  + chat(Socket): void
+     new Sender(Socket).start();
+     new Receiver(Socket).start();
+
+  + main()
+	new Server_1on1();

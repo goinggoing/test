@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function() {
+	
+	// 이벤트 속성을 이용한 리스너 등록
+	btnOk.onclick = function() {
+		alert("Clicked!!");
+	}
+	
+	// ----------------------------------------
+	
+	// 이벤트 리스터를 등록하는 API함수 
+	
+	btnTest.addEventListener("click", function() {
+		alert("테스트");
+	});
+
+	btnTest.addEventListener("mouseover", function() {
+		btnTest.style.color = "red";
+	});
+
+	btnTest.addEventListener("mouseout", function(e) {
+		btnTest.style.color = "black";
+		
+		console.log(this);
+	
+		console.log(e);
+	});
+
+};
+</script>
+</head>
+<body>
+
+<button id="btnOk">확인</button>
+
+<button id="btnTest">테스트</button>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

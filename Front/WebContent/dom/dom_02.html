@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+window.onload = function() {
+	//h1 요소 노드 생성
+	var h1 = document.createElement("h1");
+	
+	//텍스트노드 생성 : "Hello DOM"
+	var text = document.createTextNode("Hello DOM");
+	
+	console.log("--- h1 ---")
+	console.log(h1);
+	console.log("--- text ---")
+	console.log(text);
+	
+	//h1요소노드에 텍스트노드 추가하기
+	h1.appendChild(text);
+	console.log(h1);
+	
+	//<body>에 h1요소노드 추가하기
+	document.body.appendChild(h1);
+	
+};
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+

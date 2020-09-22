@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#btnOk").click(function(){
+		alert("확인!");
+	})
+	
+	// --------------------------------------------------------
+	
+	$("#btnAlert").click(function(e){
+		console.log(e);
+		
+		console.log(this);
+		console.log($(this));
+		
+		//-------------------
+		
+		$(this).html("<h1 style='color:red;'>Clicked</h1>")
+		
+		//-------------------
+		
+		//btnAlert를 클릭하면 btnOk도 자동으로 클릭됨
+		
+		$("#btnOk").click(); // 클릭 이벤트 발생 시키기
+		$("#btnOk").trigger("click"); // 클릭 이벤트 발생시키기
+	})
+});
+</script></head><body>
+
+<div>
+	<button id="btnOk">확인</button>
+	<button id="btnAlert">알림</button>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

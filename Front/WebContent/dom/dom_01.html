@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+//----- 잘못된 DOM 객체 사용 방법 -----
+
+// DOM트리를 구성하기 전에 document객체를 사용했음
+
+// DOM트리는 문서 전체를 브라우저가 읽어낸 이후에 완성됨
+
+var h = document.getElementById('header'); //id로 요소 찾기
+console.log(h);
+//-------------------------------------
+
+// DOM 객체 이용 방법 1 - onload 이벤트 리스너
+window.onload = function() {
+ 	var e = document.getElementById("header");
+ 	console.log(e);
+ 	
+ 	//DOM객체를 이용한 CSS color 변경
+ 	e.style.color = "blue";
+ 	
+};
+
+
+
+// DOM 객체 이용 방법 3 - 이벤트 리스너 코드에서 사용하기
+function chgYellow() {
+ 	var e = document.getElementById("header");
+ 	console.log(e);
+ 	
+ 	e.style.background = "yellow";
+}
+
+function chgNone() {
+ 	var e = document.getElementById("header");
+ 	console.log(e);
+
+ 	e.style.background = "none";
+}
+</script></head><body>
+
+<h1 id="header"
+ onmouseenter="chgYellow();"
+ onmouseleave="chgNone();" >HEADER TEXT</h1>
+<!-- onmouseenter : 요소위로 마우스가 올라갔을 때 발생 이벤트 -->
+<!-- onmouseleave : 요소를 마우스가 벗어났을 때 발생 이벤트 -->
+
+
+
+<script type="text/javascript">
+//DOM 객체 이용 방법 2 - </body> 직전에 작성하기
+var h = document.getElementById("header");
+console.log(h);
+
+h.style.border = "1px solid #ccc";
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="web.dao.face.SchoolDao">
+
+	<resultMap type="web.dto.Info" id="schInfo">
+		<result column="sch_cd" property="schCd"/>
+		<result column="sch_nm" property="schNm" />
+		<result column="sch_div" property="schDiv" />
+		<result column="addr_dts" property="addrDts" />
+		<result column="tel_no" property="telNo" />
+		<result column="reg_dtm" property="regDtm" />
+		<result column="mod_dtm" property="modDtm" />
+		<result column="reg_ip" property="regIp" />
+		<result column="reg_pgm" property="regPgm" />
+		<result column="mod_ip" property="modIp" />
+		<result column="mod_pgm" property="modPgm" />
+		<result column="user_id" property="userId"/>
+	</resultMap>
+	
+	<select id="selectList" parameterType="hashmap" resultMap="schInfo">
+		SELECT sch_cd,	   
+			CASE 
+				WHEN sch_div = 'E' THEN '초등학교'
+		        WHEN sch_div = 'M' THEN '중학교'
+		        WHEN sch_div = 'H' THEN '고등학교'                  
+	        END AS sch_div,
+					sch_nm,
+					tel_no,
+					zipno,
+					addr,
+					addr_dts,
+					remk,
+					reg_dtm
+		FROM bss_sch_info_mgnt
+		<if test='keyword !=null'>
+		WHERE sch_nm LIKE '%'|| #{keyword } ||'%'
+		</if>
+		<if test='searchType !=null'>
+		And sch_div LIKE '%'|| #{searchType } ||'%'
+		</if>
+		ORDER BY reg_dtm DESC nulls last
+	</select>
+	
+	<select id="selectSchCdCntCheck" parameterType="String" resultType="int">
+		SELECT count(*) FROM bss_sch_info_mgnt
+		WHERE sch_cd = #{schCd }
+	</select>
+	
+	<insert id="insert" parameterType="web.dto.Info">
+		INSERT INTO 
+			bss_sch_info_mgnt
+			    (
+					sch_cd,
+					sch_div,
+					sch_nm,
+					tel_no,
+					zipno,
+					addr,
+					addr_dts,
+					remk,
+					reg_dtm,
+					user_id
+				) VALUES 
+				(
+					 #{schCd },
+					 #{schDiv },
+					 #{schNm },
+					 #{telNo },
+					 #{zipno },
+					 #{addr },
+					 #{addrDts },
+					 #{remk },
+					  sysdate,
+					 #{userId }
+			    ) 
+	</insert>
+	
+	<delete id="deleteList" parameterType="String">
+		DELETE FROM bss_sch_info_mgnt
+		WHERE sch_cd IN ( ${names } )
+	</delete>
+	
+	<select id="excelList" parameterType="String" resultMap="schInfo">
+		SELECT sch_cd,	   
+		CASE 
+			WHEN sch_div = 'E' THEN '초등학교'
+	        WHEN sch_div = 'M' THEN '중학교'
+	        WHEN sch_div = 'H' THEN '고등학교'                  
+        END AS
+        		sch_div,
+				sch_nm,
+				tel_no,
+				zipno,
+				addr,
+				addr_dts,
+				remk,
+				reg_dtm 
+		FROM bss_sch_info_mgnt
+		WHERE sch_cd IN ( ${names } )
+		ORDER BY reg_dtm DESC nulls last
+	</select>
+	
+	<!-- 사용자 건수 -->
+	<select id="selectSchUserCnt" parameterType="hashmap" resultType="hashmap">
+		
+		SELECT sch_nm, count(*) as cnt
+	    From (
+	    	SELECT sch_nm, user_id
+			FROM bss_sch_info_mgnt
+			WHERE 1=1
+				<if test='keyword !=null'>
+				AND sch_nm LIKE '%'|| #{keyword } ||'%'
+				</if>
+				<if test='searchType !=null'>
+				AND sch_div LIKE '%'|| #{searchType } ||'%'
+				</if>
+			GROUP BY sch_nm, user_id
+	    )
+	    GROUP BY sch_nm
+	</select>	
+
+</mapper>

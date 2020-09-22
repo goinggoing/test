@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+p::first-line {
+	color: blue;
+}
+
+p::first-letter {
+	color: red;
+	font-size: 20px;
+}
+
+/* span태그의 바로 앞에 가상요소를 생성한다 */
+p + span::before {
+
+	/* before요소에 쓰여질 내용 */
+	content: "span\a before\a";	/* \a는 개행문자 (ASCII 10) */
+	
+	/* content의 공백문자 처리 방식 지정 */
+	white-space: pre-wrap;
+	/*	no-wrap : 공백들을 하나의 띄어쓰기로 병합 (기본동작) 
+		pre : 공백문자를 구분 (개행 X)
+		pre-line : 개행만 구분
+		pre-wrap : 전부 구분
+	  */
+	
+	
+	/* content에 적용될 CSS */
+	color: orange;
+	background: gray;
+}
+
+hr ~ span::before {
+	content: " | ";
+	font-size: 0.8em;
+}
+
+hr + span::before {
+	content: "";
+}
+
+div.new::after {
+	content: "new";
+	font-size: 10px;
+	color: #fff;
+	background: #f66;
+	
+	border-radius: 3px;
+	padding: 1px 2px;
+}
+
+
+</style></head><body>
+
+<p>첫 번째(p)</p>
+<span>두번째(span)</span>
+<div class="new">세 번째(div)</div>
+<p>네번째(p) This is a p tag. This is a p tag.<br>
+ 사랑의 기관과 인간의 가슴이 그와 찾아다녀도,<br>
+ 끝까지 가치를 쓸쓸하랴?<br>
+ 그것은 가진 가치를 사람은 안고, 보라.</p>
+
+<hr>
+<span>메일</span><span>카페</span><span>블로그</span>
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

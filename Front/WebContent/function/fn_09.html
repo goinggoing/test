@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+var data = "Hello"; //전역변수
+
+function f1() {
+	data = "HI";
+	console.log(data);
+}
+
+function f2() {
+	data = "HOLA";
+	console.log(data);
+}
+
+console.log("-------------------------")
+var cnt = 0;
+
+function countUp() {
+	return cnt++;
+}
+
+console.log( countUp() );
+console.log( countUp() );
+console.log( countUp() );
+console.log( countUp() );
+console.log( countUp() );
+
+
+
+console.log("-------------------------")
+function counter() {
+	var count = 0;
+	
+	return count += 1;	
+}
+
+console.log( counter() );
+console.log( counter() );
+console.log( counter() );
+console.log( counter() );
+console.log( counter() );
+
+
+
+console.log("-------------------------")
+function counter() {
+	var count = 0;
+	
+	return function() {
+		return count += 1;
+	};
+}
+
+var res = counter();
+console.log( res() );
+console.log( res() );
+console.log( res() );
+console.log( res() );
+console.log( res() );
+
+res = null; // Closure 해제
+
+console.log("--------------");
+var res2 = counter();
+console.log( res2() );
+console.log( res2() );
+console.log( res2() );
+
+console.log("-----------------")
+for( var i = 0; i < 10; i++ ) { // 0~9, 10번 반복
+	// 100밀리초 후에 i의 값 출력
+	setTimeout( function() {
+		console.log(i);
+	}, 100);
+}
+
+console.log("-----------------")
+for( var i = 0; i < 10; i++ ) { // 0~9, 10번 반복
+	
+	(function( data ) {	
+		// 100밀리초 후에 i의 값 출력
+		setTimeout( function() {
+			console.log(data);
+		}, 100);
+	})(i); //함수 정의와 함께 호출
+	
+}
+
+console.log("-----------------")
+for( var i = 0; i < 10; i++ ) { // 0~9, 10번 반복
+	
+	function func( data ) {	
+		// 100밀리초 후에 i의 값 출력
+		setTimeout( function() {
+			console.log(data);
+		}, 100);
+	}; //함수 정의와 함께 호출
+	
+	func(i);
+}
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+// 	// 입력한 메시지를 알림창으로 보여주기(메시지 전송)
+// 	$("#btnOk").click(function() {
+// 		alert("입력 메시지 : " + $("[name~=msg]").val() );
+		
+// 		$("[name~=msg]").val(""); //입력창 지우기
+// 	});
+	
+// 	$("[name~=msg]").keydown(function(e) {
+
+// 		// Enter 키가 눌렸을 때 반응코드
+// 		if( e.keyCode == 13 ) {
+// 	 		$("#btnOk").click();
+// 		}
+		
+// 	});
+	
+	// -----------------------------------------
+	
+	var send = function(e) {
+		if( e.type == "click"
+				|| (e.type == "keydown" && e.keyCode == 13) ) {
+			alert("입력 메시지 : " + $("[name~=msg]").val() );
+			
+			$("[name~=msg]").val(""); //입력창 지우기
+		}
+	};
+	
+// 	입력한 메시지를 알림창으로 보여주기(메시지 전송)
+	$("#btnOk").click(send);
+	$("[name~=msg]").keydown(send);
+	
+	
+});
+</script></head><body>
+
+<div>
+	<input type="text" name="msg" />
+	<button id="btnOk">확인</button>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

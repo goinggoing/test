@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+ src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+function sayHi() { alert("hi"); }
+function red() { $(this).css("color", "red"); }
+var blue = function() { $(this).css("color", "blue"); }
+
+$(document).ready(function() {
+	
+	//이벤트 횟수에 제한없이 리스너 동작
+	$("#btnOk").on({
+		"click": sayHi
+		, "mouseenter": red
+		, "mouseleave": blue
+	});
+
+	// ------------------------------
+	
+	//이벤트 리스너가 딱 한번만 동작함
+	$("#btnAlert").one({
+		"click": sayHi
+		, "mouseenter": red
+		, "mouseleave": blue
+	});
+	
+	// ------------------------------
+
+	//버튼들의 click 이벤트리스너 제거
+	// mouseenter, mouseleave는 남아있음
+	$("button").off("click");
+	
+	//click 이벤트 다시 등록하기
+	$("div > button#btnAlert").on("click", sayHi);
+	
+});
+</script></head><body>
+
+<div>
+	<button id="btnOk">확인</button>
+	<button id="btnAlert">알림</button>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

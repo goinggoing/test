@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+var data; //변수 선언
+
+console.log( data );
+
+// console.log( ddd );
+// 자바스크립트는 에러가 발생하면 그 순간부터
+//다음에 오는 코드들을 수행하지 않는다
+
+console.log("------------");
+
+if( data == undefined ) {
+	console.log("data변수가 초기화되지 않았음")
+}
+
+if( data == null ) {
+	console.log("data변수의 값이 null")
+	console.log("참조대상이 없음")
+}
+
+if( !data ) {
+	console.log("data가 false임")
+}
+
+console.log( "data == false" );
+console.log( data == false );
+
+console.log("--------------")
+
+if( data === undefined ) {
+	console.log("===연산, data변수가 초기화되지 않음")
+}
+
+if( data === null ) {
+	console.log("===연산, data변수가 참조하는 대상이 없음")
+}
+
+console.log("--------------")
+console.log("undefined == null")
+console.log( undefined == null )
+
+console.log("--------------")
+console.log("undefined === null")
+console.log( undefined === null )
+
+console.log("--------------")
+console.log( typeof(undefined) )
+console.log( typeof(null) )
+
+console.log("--------------")
+console.log( !undefined )
+console.log( !null )
+
+console.log("--------------")
+console.log( typeof(data) );
+
+data = null;
+console.log( typeof(data) );
+
+data = false;
+console.log( typeof(data) );
+
+data = {};
+console.log( typeof(data) );
+
+data = [];
+console.log( typeof(data) );
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

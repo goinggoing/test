@@ -1,0 +1,17 @@
+---------------
+class Student
+---------------
+- name : String
+- age : int
+
+- kor : int
+- eng : int
+- math : int
+
+- sum : int
+
+- avg : double
+---------------
+<<setter>>
+<<getter>>
+---------------

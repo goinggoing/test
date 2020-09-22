@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+var result; //전역변수
+
+function add(n1, n2) { //덧셈
+	result = n1 + n2;
+}
+
+function print() {
+	console.log(result);
+}
+
+add( 10, 20 );
+print();
+
+console.log("-------------------");
+//콜백 함수, callback function
+//	 직접 호출해서 동작하는 함수가 아닌
+//	외부의 동작에 의해서 실행되는 함수
+
+function sum( n1, n2, callback ) { //연산
+	var res = n1 + n2;
+	
+	callback(res); //연산 결과 처리 담당 함수
+}
+
+function display( data ) {	// 결과처리 방법1 콜백함수
+	console.log("결과값 : " + data);
+}
+
+function alertRes( data ) {	// 결과처리 방법2 콜백함수
+	alert("결과값은 " + data + "입니다");
+}
+
+// ----------------------
+
+sum(10, 20, display);
+sum(30, 40, alertRes);
+
+// ------------------------------
+
+sum( 40, 50, function( data ) {
+	document.write( data );
+});
+
+
+var write = function( data ) {
+	document.write( data );
+};
+sum( 40, 50, write);
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+ + 클라이언트가 입력한 데이터 서버로 전송하기
+  (단방향)
+
+  - Ex02_InputData_Client
+	키보드로 입력한 내용을 소켓으로 전송
+
+	Scanner
+	sock->PrintWriter
+
+
+  - Ex02_InputData_Server
+	소켓으로 받은 내용을 모니터로 출력
+
+	sock->BufferedReader
+	System.out

@@ -1,0 +1,69 @@
+package interceptor.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import interceptor.dto.User;
+
+@Controller
+public class InterceptorLoginController {
+
+	private static final Logger logger = LoggerFactory.getLogger(InterceptorLoginController.class);
+
+	@RequestMapping(value="/interceptor/login", method=RequestMethod.GET)
+	public void loginForm() { }
+
+	@RequestMapping(value="/interceptor/login", method=RequestMethod.POST)
+	public String loginProc(User user, HttpSession session) {
+		
+		logger.info(user.toString());
+		
+		//로그인 인증
+		if( "abc".equals(user.getId()) && "123".equals(user.getPw()) ) {
+			logger.info("일반유저 로그인 성공");
+			
+			session.setAttribute("login", true);
+			session.setAttribute("nick", "tiancai");
+			
+		} else if( "admin".equals(user.getId()) ) {
+			logger.info("관리자 로그인 성공");
+			
+			session.setAttribute("login", true);
+			session.setAttribute("nick", "관리자");
+			
+		} else {
+			logger.info("로그인 실패");
+			
+			return "redirect:/interceptor/login";
+			
+		}
+		
+		return "redirect:/interceptor/main";
+	}
+
+	@RequestMapping(value="/interceptor/main")
+	public void main() { }
+
+	@RequestMapping(value="/interceptor/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:/interceptor/main";
+	}
+
+}
+
+
+
+
+
+
+
+
+
+

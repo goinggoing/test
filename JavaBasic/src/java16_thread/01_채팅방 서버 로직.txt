@@ -1,0 +1,44 @@
+
+ + 채팅방 서버
+  - 멤버필드 : Map<String, PrintWriter>
+
+  1. 서버 실행
+	>> Map 생성
+
+	>> 서버 접속 소켓 생성
+
+	>> Listen
+
+	>> (클라이언트가 접속할 경우)
+	  ClientManager 생성 후 스레드 활성화(통신 소켓전달)
+
+
+  2. ClientManager class (내부 클래스로 구현)
+	- 멤버 필드 : 통신 소켓, 클라이언트ID
+
+	[ 아래 코드는 run() 메소드에서 구현 ]
+	>> 클라이언트의 메시지 입력 받기
+
+	>> 메시지를 화면에 출력하기 ( ex. Alice>> HI )
+
+	CASE 1.
+	>> 메시지가 null일 경우 (클라이언트 접속 해제, 로그아웃)
+		 맵에서 클라이언트ID를 제외한
+		모든 PrintWriter로 로그아웃 메시지 출력
+
+		맵에서 클라이언트ID를 remove
+
+	CASE 2.
+	>> 메시지에 _ID_IS_가 포함될 경우 (로그인)
+		_ID_IS_ 로 split 하여 클라이언트ID 알아내기
+
+		 map에 <클라이언트ID, sock.getOutputStream>
+		형식으로 put 하기
+
+		 맵에서 클라이언트ID를 제외한
+		모든 PrintWriter로 로그인 메시지 출력
+
+	CASE 3.
+	>> 일반 메시지 처리
+		 맵에서 클라이언트ID를 제외한
+		모든 PrintWriter로 일반 메시지 출력
